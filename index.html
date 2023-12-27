@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 9 - Product Landing Page for Monster</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <section class="main">
+    <header>
+      <a href="#"><img src="m-logo.png" class="logo"></a>
+      <div class="toggle"></div>
+      <ul class="navigation">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </header>
+    <div class="content">
+      <div class="text">
+        <h2>Feel the Rush<br>with <span style="font-family: 'Playfair Display', sans-serif; font-style: italic;">monster.</span></h2>
+        <p>Indulge your senses with Monster's extraordinary lineup of energizing and refreshing drinks. Crafted with the perfect blend of flavor and power, our beverages are a symphony for your taste buds. Whether you crave an intense burst of energy or a tropical escape, Monster has the drink that'll leave you roaring for more.</p>
+        <a href="#" class="btn">Get Yours</a>
+      </div>
+      <div class="slider">
+        <div class="slides active" data-drink="blackGreen"><img src="m-3.png"></div>
+        <div class="slides" data-drink="pinkWhite"><img src="m-2.png"></div>
+        <div class="slides" data-drink="whiteBlue"><img src="m-1png"></div>
+      </div>
+    </div>
+    <div class="footer">
+      <ul class="sci">
+        <li><a href="#"><ion-icon name="logo-facebook"></ion-icon></a></li>
+        <li><a href="#"><ion-icon name="logo-twitter"></ion-icon></a></li>
+        <li><a href="#"><ion-icon name="logo-instagram"></ion-icon></a></li>
+      </ul>
+      <div class="prevNext">
+        <p>Always Fresh</p>
+        <span class="prev"><ion-icon name="chevron-back-outline"></ion-icon></span>
+        <span class="next"><ion-icon name="chevron-forward-outline"></ion-icon></span>
+      </div>
+    </div>
+  </section>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script>
+    function handleBackgroundChange(index) {
+      const mainSection = document.querySelector('.main');
+      const monsterImage = document.querySelector('.slides.active img');
+
+      switch (index) {
+        case 1:
+          mainSection.style.background = 'radial-gradient(circle, rgba(255, 192, 203, 1) 0%, rgba(255, 105, 180, 1) 100%)';
+          monsterImage.src = 'm-2.png';
+          break;
+        case 2:
+          mainSection.style.background = 'radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(0, 0, 255, 1) 100%)';
+          monsterImage.src = 'm-1.png';
+          break;
+        default:
+          mainSection.style.background = 'radial-gradient(circle, rgba(2, 4, 1, 1) 0%, rgba(50, 82, 26, 1) 100%)';
+          monsterImage.src = 'm-3.png';
+      }
+    }
+
+    const prev = document.querySelector('.prev');
+    const next = document.querySelector('.next');
+
+    let currentIndex = 0;
+
+    prev.addEventListener('click', function () {
+      currentIndex = (currentIndex - 1 + 3) % 3;
+      handleBackgroundChange(currentIndex);
+    });
+
+    next.addEventListener('click', function () {
+      currentIndex = (currentIndex + 1) % 3;
+      handleBackgroundChange(currentIndex);
+    });
+  </script>
+</body>
+
+</html>
